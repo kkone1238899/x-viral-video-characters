@@ -208,11 +208,58 @@
 - **怎么用它搞钱**："捏脸 + 锁脸"是一套可交付的建模服务，按人物收费
 - **来源**：[@noahvisualsx](https://x.com/noahvisualsx/status/2113250454486618406) · 2026-10-22
 
+
+### 方法 29：@JunJun0321A——两套单人物设定图版式（脸部特写 + 三视图 + 信息表）
+
+- **核心提炼**：版式固定为上下结构：上半是人物展示（左侧大面积脸部特写，右侧依次排正面 / 侧面 / 背面三视图），下半是约占三分之一的信息表格，3:4 竖版；人物要素一次写全：年龄气质、发型、五官妆容、服装配饰、身材体态、背景光线；两套示例走不同路线（甜美风与清冷风），同一版式换人设即复用；与方法 20 的九大板块固定表不同，这是单人物一页式设定图
+- **适用场景**：美女号 / 虚拟人设、需要批量出设定图的创作者
+- **怎么用它搞钱**：设定图本身就是可交付物，一套版式批量出人设，按人物收费
+- **来源**：[@JunJun0321A](https://x.com/JunJun0321A/status/2117603752354201634) · 2026-11-03；[@JunJun0321A](https://x.com/JunJun0321A/status/2117608137805217804) · 2026-11-03
+
+### 方法 30：@superfang119——64 段镜头先建记忆库，再接入 H3 Continuity Studio
+
+- **核心提炼**：先建资料表再碰插件：64 段、20,185 帧，每段记原文件 / 编号 / 起止帧 / 人物 / 场景 / 道具 / 进入状态 / 离开状态 / 未知项 / 修复记录；关键区分：原生 Visual Memory 读的是插件保存的已完成片段 latent，不是 MP4 / 抽帧 PNG，旧成片只能当普通参考图；参考图分工写清：身份用清晰头像 + 体型基准、三视图模糊五官不能教画脸、服装只管衣物、场景只管空间光线材质、前镜只提供已发生姿态；身份、造型、现场状态分开维护，只有画面能确认的内容才写入；验收要连续播放整个采用窗并规定可观察表演指标，不能用首帧截图覆盖后续失败；Vision 检查只筛查人物 / 道具 / 地点变化，抽帧会漏短暂问题，drift-only、无配置、空问题列表都不等于通过；本轮结论是资料包而非成片验证（插件尚未安装，23 项离线 JS 测试通过，Python 测试因缺模块未跑）
+- **适用场景**：长片 / 多段连续短剧，跨场景返回、换机位仍需同一人
+- **怎么用它搞钱**：长片连续性是高价长单的门槛，这套资料表方法论可做成导演服务或课程
+- **来源**：[@superfang119](https://x.com/superfang119/status/2117631884943647197) · 2026-11-03（Article 全文已核验）
+
+### 方法 31：@PixelAigc——3060 12G 本地跑 H3 Turbo LoRA 双镜头实测耗时
+
+- **核心提炼**：低卡实测：MiniMax H3 Turbo LoRA 工作流，3060 12G，480P、5 秒、6 步；同一对武侠人物：全景打斗 302 秒，对话特写正反打 288 秒——低卡也能跑双镜头同一人物，单条约 5 分钟，可据此报工期；帖内为成片演示，未附工作流链接
+- **适用场景**：本地低成本出片、接单前算清算力成本
+- **怎么用它搞钱**：低卡成本账就是接单报价底气，能报出别人报不出的低价长单
+- **来源**：[@PixelAigc](https://x.com/PixelAigc/status/2117650241961042096) · 2026-11-04
+
+### 方法 32：@superfang119——OpenJutsu：本地视频换人不止换脸（1440★ MIT）
+
+- **核心提炼**：基于 MiniMax H3 + SAM 3.1 + Qwen3-VL 的本地换人工具：整个人物替换（不止换脸，发型身材服装跟原动作走，运镜剪辑音轨保留）；最多 4 人同时替换（SAM 追踪 + Qwen 判身份匹配，适合乐队 MV / 多人对话 / 群像）；局部四操作：换物、移除、只换背景、指定位置加物（关键帧控位置）；图片生成新造型 + 17 种灯光重打 + 人脸修复调色；踩坑：4060 Ti 16G + 64G 内存下 6 秒 480p 约 6–13 分钟，1080p 比 736p 慢约 2.5 倍，镜面反射场景不可靠，需 ComfyUI 及配套节点
+- **适用场景**：MV / 群像 / 服装展示换人、旧片换主角再发行
+- **怎么用它搞钱**：换人是成熟的代制服务形态，一套工具接多单，换主角重发就是新产品
+- **来源**：[@superfang119](https://x.com/superfang119/status/2117652752721690646) · 2026-11-04；仓库 [D3voz/openjutsu](https://github.com/D3voz/openjutsu)（1440★ MIT，当日 GitHub API 核验）
+
+### 方法 33：@ai_chuhai——终审裁判清单：工具解决不了一致性，规矩才能
+
+- **核心提炼**：把裁判标准写死再开拍：塑料皮肤、表情僵、色温漂、衣发跳变、身份漂、招牌乱码、道具消失，逐镜判过 / 警告 / 不过；核不了的项（如抽帧核口型）标未验证，不硬写通过；关键揭露：被引插件本身不带视频模型，所谓接力只是把上一镜结尾写成文字塞进下一镜提示词，尾帧图并未传给模型——真要保一致，能传图的模型必须把上一镜尾帧图真正传进去；结论：工具解决不了一致性，规矩才能
+- **适用场景**：多镜头长片质检、代制交付验收
+- **怎么用它搞钱**：终审清单写进交付合同就是验收标准，减少返工扯皮，验收能力本身可收费
+- **来源**：[@ai_chuhai](https://x.com/ai_chuhai/status/2117694781174526262) · 2026-11-04（引用 @jarvis11x 窗外原帖，不单独计）
+
+### 方法 34：@adorerlemex——59 秒无台词爱情动画案例：固定双角色 + 每镜一动作 + 音乐剪辑
+
+- **核心提炼**：59 秒无台词 AI 爱情动画拿下 2200 万 + 观看；做法：先固定两个角色形象，每镜只做一个动作，再按音乐剪辑，用雨、花、伞几个小元素串起故事；工具链 Midjourney 8.2 + Krea 3 + Seedance 2.5；被引原帖为 10-28 窗外成片，本条计引用总结
+- **适用场景**：无对白叙事短片、想做多语区发行的创作者
+- **怎么用它搞钱**：无台词就没有语言门槛，同一片子可多语区发行，一鱼多吃
+- **来源**：[@adorerlemex](https://x.com/adorerlemex/status/2117775386948124913) · 2026-11-04
+
 ## 开源项目
 
 | 项目 | Star | 一句话（解决什么问题 / 适合谁用） | 怎么用它搞钱 |
 |---|---|---|---|
 | [HBAI-Ltd/Toonflow-app](https://github.com/HBAI-Ltd/Toonflow-app) | 16,998 | AI 创作平台：智能分镜 + 短剧，角色一致性 | 动漫解说 / 漫剧账号 |
+| [neopen/story-shot-agent](https://github.com/neopen/story-shot-agent) | 236 | 剧本→分镜智能体：任意格式剧本拆成镜头级提示词（Sora / Veo / Runway / 可灵即用），三视图 + RAG + 三级记忆 + 向量检索保角色 / 场景 / 剧情跨片段一致，pip 安装或 Docker，支持 MCP / REST | 短剧 / 漫剧分镜代制，把“人物不崩的分镜包”当交付物 |
+| [Creepybits/World_weaver](https://github.com/Creepybits/World_weaver) | 32 | 不用 LoRA / IP-Adapter / ControlNet，靠文字 DNA 保一致：Prompt Helper 用 Gemini Vision 把参考图反推成结构化文字描述，Character Vault 存进 ComfyUI 随时调用，主工作流把 DNA 与服装 / 动作 / 世界模块组合出新场景 | 给客户建“文字 DNA 角色库”，一次建库、长期复用收费 |
+| [18yz153/ComfyUI-Persona-Director](https://github.com/18yz153/ComfyUI-Persona-Director) | 24 | ComfyUI 节点：把身份 / 服装 / 动作 / 地点 / 构图 / 风格写成 JSON 状态机，改姿势不丢衣服；LLM 用 function calling 只改变化字段，状态存 JSON 可断点续跑；支持 SDXL / Pony 标签与 FLUX / SD3 自然语言双模式 | 本地 SD 工作流一致性方案，打包进出图服务 |
+| [nigo-studio/ai-film-skills](https://github.com/nigo-studio/ai-film-skills) | 23 | Claude Code 双 skill：video-prompt-director 把短场景指令写成 Seedance 2.5 可提交提示词（参考角色映射 / 分段事件脚本 / 机位音频），character-consistency 把简短人物简介扩成超详细提示词并生成三格角色表（半身 / 全身正面 / 全身背面）全程作身份参考；只写提示词不调生成 API，零配置 | 动作短片提示词代写 / 角色一致性咨询 |
 
 ## 收录标准
 
@@ -242,6 +289,7 @@
 发现好的人物构建 prompt / skill，欢迎提 Issue 或 PR（格式见 CONTRIBUTING.md）。
 
 ## 更新日志
+- 2026-11-04：早档搜集（优先队列第 11 天，第二轮）——X 新增 6 条人物构建方法提炼入库：@JunJun0321A 两套单人物设定图版式（脸部特写 + 三视图 + 信息表，3:4 竖版）/ @superfang119 64 段镜头记忆库 + H3 Continuity Studio 接入（原生 Visual Memory 读 latent 而非 MP4 / 抽帧，参考图分工，连续播放验收）/ @PixelAigc 3060 12G 本地 H3 Turbo LoRA 双镜头实测（全景打斗 302 秒、特写正反打 288 秒）/ @superfang119 OpenJutsu 本地视频换人（1440★ MIT，整人替换 + 最多 4 人 + 局部四操作 + 17 种灯光重打）/ @ai_chuhai 终审裁判清单（过 / 警告 / 不过三档，核不了标未验证，尾帧图须真传模型）/ @adorerlemex 59 秒无台词爱情动画案例（固定双角色 + 每镜一动作 + 音乐剪辑，2200 万 + 观看）；GitHub 新增 4 个：neopen/story-shot-agent 236★ MIT / Creepybits/World_weaver 32★ MIT / 18yz153/ComfyUI-Persona-Director 24★ Apache-2.0 / nigo-studio/ai-film-skills 23★ MIT；7 帖正文与时间戳均经 fxtwitter API 逐条直读核验（11-03 21:04／21:21／22:55、11-04 00:08／00:18／03:05／08:26 北京）；浏览器报告三处偏差已按原文纠正（@JunJun0321A 第二帖服装背景、@PixelAigc 帖内无工作流链接、@ai_chuhai 跟帖用法未经核验不采用）；13 组关键词×Latest + 12 位作者时间线抽查，登录态正常、全程只读无互动、未遇真人验证；剔除：@hohomngkj148497 一句话三视图与库内方法重复、窗口外帖（@HarrrryerYe 20:52 差 8 分钟等）、纯晒图 / 一句话感叹 / 提问帖；GitHub 文档关键词 `character consistency video` 0 结果、`ai character builder` 全 ≤1★，补充 `character consistency` 命中；暂缓 Sri01729 模板仓（2025-08 后未推送超一年）、Dapeng960208 漫画工具（类目偏离且无 LICENSE）
 
 - 2026-10-22：晚档搜集（优先队列第 11 天）——X 新增 6 条人物构建方法提炼入库：@HaluAIArt 三参考图+15 秒时间线的人物锁定工作流（Gemini 监督+Grok Imagine）/ @a_man8000 人物一致性优先级公式（人物同一性＞服装＞人体结构＞俯视＞构图）/ @qinghaiwu9527 6 套三视图设定板+三视图公式（16:9 横版/左侧 40% 特写+右侧 60% 三视角）/ @Dheepanratnam Seedance 2.5 一镜到底一致性实测（结论：修好物体物理，恐怖谷就没了）/ @MegaSaturn Seedance 2.5 vs Kling 4.0 人物一致性对比实测（Seedance 胜）/ @noahvisualsx AI 捏脸全流程（人物卡→母图→锁脸 SOP）；15 组关键词×Latest+since:2026-10-22 + 9 账号时间线抽查，窗口内其余候选按宁缺毋滥剔除（@JunJun0321A/@swordBluesy/@sinvlo233 去重、Higgsfield/Metric/APOB 广告帖、一句话感叹/纯晒图、@ImanuelAarde 涉时政等）；登录态正常、全程只读、未遇真人验证
 - 2026-10-22：午档搜集（优先队列第 11 天）——X 新增 8 条人物构建方法提炼入库：@TanLuAI codex 群像流程的配角/女二延伸（三步：批量群像图→选角→转详细角色卡）/ @wanerfu 70万粉账号拆解"三一致"框架（角色/动作/材质一致+固定生产流程）/ @LoveUolanda H3 多参考 MV 参考素材"权限分工"法（Picture1 只管人物/Audio1 是时间唯一权威/Pose 只迁移姿态）/ @despicable_arts Kling 4.0 "Ingredients 四图分工"超级英雄短片 / @__Libra1 "双参考+优先级"肖像提示词（FACE IDENTITY TOP PRIORITY）/ @JunJun0321A 九大板块「AI 美女角色固定表」模板 / @3three_AI 基于参考照片的角色固定表+美女号变现链路 / @abu2844594329 Kling 4.0 Omni Reference 课代表总结（角色/物体/音频一次生成，1 积分/秒）；16 组关键词×Latest + 11 位去重名单与 3 通用账号时间线抽查，30+ 候选按宁缺毋滥剔除（@sinvlo233 窗口前帖、@ItMightBeAScam 涉时政跳过等）；全程只读、未遇真人验证
